@@ -135,5 +135,10 @@ namespace Microsoft.AspNetCore.Identity.FunctionalTests
             var resetPassword = await ResetPassword.CreateAsync(link, client, new DefaultUIContext().WithExistingUser());
             return await resetPassword.SendNewPasswordAsync(email, newPassword);
         }
+
+        internal static async Task<ChangePassword> ChangePasswordAsync(ChangePassword changePassword)
+        {
+            return await changePassword.ChangePasswordAsync($"!Test.Password1$", $"!Test.Password2$");
+        }
     }
 }
